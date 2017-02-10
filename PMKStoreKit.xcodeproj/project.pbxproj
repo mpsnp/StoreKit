@@ -17,6 +17,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		63291E611E5D17C500C81FDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B0AC571D595E1B00FA21D9;
+			remoteInfo = PromiseKit;
+		};
+		63291E631E5D17C500C81FDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 631751A81D59766500A9DDDC;
+			remoteInfo = "PMKA+Tests";
+		};
+		63291E651E5D17C500C81FDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 630019221D596292003B4E30;
+			remoteInfo = PMKCoreTests;
+		};
+		63291E671E5D17CD00C81FDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B0AC561D595E1B00FA21D9;
+			remoteInfo = PromiseKit;
+		};
 		63C7FFF81D5C020D003BAE60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63C7FF9E1D5BEE09003BAE60 /* Project object */;
@@ -27,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63291E281E5CF5E500C81FDD /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = ../../PromiseKit.xcodeproj; sourceTree = "<group>"; };
 		637B4A691D5D5F9B00E1BC6C /* SKRequest+AnyPromise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKRequest+AnyPromise.h"; path = "Sources/SKRequest+AnyPromise.h"; sourceTree = SOURCE_ROOT; };
 		637B4A6A1D5D5F9B00E1BC6C /* SKRequest+AnyPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKRequest+AnyPromise.m"; path = "Sources/SKRequest+AnyPromise.m"; sourceTree = SOURCE_ROOT; };
 		637B4A6B1D5D5F9B00E1BC6C /* SKRequest+Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SKRequest+Promise.swift"; path = "Sources/SKRequest+Promise.swift"; sourceTree = SOURCE_ROOT; };
@@ -59,15 +89,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63291E5C1E5D17C500C81FDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63291E621E5D17C500C81FDD /* PromiseKit.framework */,
+				63291E641E5D17C500C81FDD /* PMKA+Tests.xctest */,
+				63291E661E5D17C500C81FDD /* PMKCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		63C7FF9D1D5BEE09003BAE60 = {
 			isa = PBXGroup;
 			children = (
+				63291E281E5CF5E500C81FDD /* README.markdown */,
 				63C700091D5C0253003BAE60 /* Info.plist */,
 				63CCF8121D5C0C4E00503216 /* Cartfile */,
 				63CCF8171D5C11B500503216 /* Carthage.xcconfig */,
 				63C7FFA91D5BEE09003BAE60 /* Sources */,
 				63C7FFF31D5C020D003BAE60 /* Tests */,
 				63C7FFA81D5BEE09003BAE60 /* Products */,
+				63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +170,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				63291E681E5D17CD00C81FDD /* PBXTargetDependency */,
 			);
 			name = PMKStoreKit;
 			productName = "PMK+UIKit";
@@ -140,7 +183,6 @@
 			buildPhases = (
 				63C7FFEE1D5C020D003BAE60 /* Sources */,
 				63C7FFEF1D5C020D003BAE60 /* Frameworks */,
-				639447051D5D011300DDAE3C /* Embed Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,7 +201,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Max Howell";
 				TargetAttributes = {
 					63C7FFA61D5BEE09003BAE60 = {
@@ -184,6 +226,12 @@
 			mainGroup = 63C7FF9D1D5BEE09003BAE60;
 			productRefGroup = 63C7FFA81D5BEE09003BAE60 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 63291E5C1E5D17C500C81FDD /* Products */;
+					ProjectRef = 63291E5B1E5D17C500C81FDD /* PromiseKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				63C7FFA61D5BEE09003BAE60 /* PMKStoreKit */,
@@ -192,23 +240,29 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		639447051D5D011300DDAE3C /* Embed Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				PromiseKit,
-			);
-			name = "Embed Carthage Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "case \"$PLATFORM_NAME\" in\nmacosx) plat=Mac;;\niphone*) plat=iOS;;\nwatch*) plat=watchOS;;\nappletv*) plat=tvOS;;\n*) echo \"error: Unknown PLATFORM_NAME: $PLATFORM_NAME\"; exit 1;;\nesac\nfor (( n = 0; n < SCRIPT_INPUT_FILE_COUNT; n++ )); do\nVAR=SCRIPT_INPUT_FILE_$n\nframework=$(basename \"${!VAR}\")\nexport SCRIPT_INPUT_FILE_$n=\"$SRCROOT\"/Carthage/Build/$plat/\"$framework\".framework\ndone\n\n/usr/local/bin/carthage copy-frameworks || exit\n\nfor (( n = 0; n < SCRIPT_INPUT_FILE_COUNT; n++ )); do\nVAR=SCRIPT_INPUT_FILE_$n\nsource=${!VAR}.dSYM\ndest=${BUILT_PRODUCTS_DIR}/$(basename \"$source\")\nditto \"$source\" \"$dest\" || exit\ndone";
+/* Begin PBXReferenceProxy section */
+		63291E621E5D17C500C81FDD /* PromiseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PromiseKit.framework;
+			remoteRef = 63291E611E5D17C500C81FDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-/* End PBXShellScriptBuildPhase section */
+		63291E641E5D17C500C81FDD /* PMKA+Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "PMKA+Tests.xctest";
+			remoteRef = 63291E631E5D17C500C81FDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		63291E661E5D17C500C81FDD /* PMKCoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMKCoreTests.xctest;
+			remoteRef = 63291E651E5D17C500C81FDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63C7FFA21D5BEE09003BAE60 /* Sources */ = {
@@ -232,6 +286,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		63291E681E5D17CD00C81FDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PromiseKit;
+			targetProxy = 63291E671E5D17CD00C81FDD /* PBXContainerItemProxy */;
+		};
 		63C7FFF91D5C020D003BAE60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63C7FFA61D5BEE09003BAE60 /* PMKStoreKit */;
@@ -259,6 +318,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -317,6 +377,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

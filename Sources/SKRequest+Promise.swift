@@ -1,12 +1,11 @@
-import StoreKit
-#if !COCOAPODS
 import PromiseKit
-#endif
+import StoreKit
 
 /**
  To import the `SKRequest` category:
 
     use_frameworks!
+    swift_version = "3.0"
     pod "PromiseKit/StoreKit"
 
  And then in your sources:
@@ -19,7 +18,7 @@ extension SKRequest {
 
      - Returns: A promise that fulfills if the request succeeds.
     */
-    public func promise() -> Promise<SKProductsResponse> {
+    public func start(_: PMKNamespacer) -> Promise<SKProductsResponse> {
         let proxy = SKDelegate()
         delegate = proxy
         proxy.retainCycle = proxy
@@ -30,20 +29,21 @@ extension SKRequest {
 
 
 private class SKDelegate: NSObject, SKProductsRequestDelegate {
-    let (promise, fulfill, reject) = Promise<SKProductsResponse>.pending()
+    let (promise, seal) = Promise<SKProductsResponse>.pending()
     var retainCycle: SKDelegate?
 
-    @objc fileprivate func request(_ request: SKRequest, didFailWithError error: Error) {
-        reject(error)
+    @objc func request(_ request: SKRequest, didFailWithError error: Error) {
+        let nsError = error as NSError
+        if nsError.domain == SKErrorDomain, nsError.code == SKError.Code.paymentCancelled.rawValue {
+            seal.reject(PMKError.cancelled)
+        } else {
+            seal.reject(error)
+        }
         retainCycle = nil
     }
 
-    @objc fileprivate func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        fulfill(response)
+    @objc func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        seal.fulfill(response)
         retainCycle = nil
-    }
-
-    @objc override class func initialize() {
-        NSError.registerCancelledErrorDomain(SKErrorDomain, code: SKError.Code.paymentCancelled.rawValue)
     }
 }

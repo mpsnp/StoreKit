@@ -14,7 +14,7 @@ class SKProductsRequestTests: XCTestCase {
         }
 
         let ex = expectation(description: "")
-        MockProductsRequest().promise().then { _ in
+        MockProductsRequest().start(.promise).then { _ in
             ex.fulfill()
         }
         waitForExpectations(timeout: 1, handler: nil)
@@ -31,7 +31,7 @@ class SKProductsRequestTests: XCTestCase {
         }
 
         let ex = expectation(description: "")
-        MockProductsRequest().promise().catch(policy: .allErrors) { err in
+        MockProductsRequest().start(.promise).catch(policy: .allErrors) { err in
             XCTAssert((err as NSError).isCancelled)
             ex.fulfill()
         }
