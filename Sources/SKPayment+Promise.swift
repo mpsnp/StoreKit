@@ -22,6 +22,10 @@ fileprivate class PaymentObserver: NSObject, SKPaymentTransactionObserver {
         retainCycle = self
     }
     
+    deinit {
+        SKPaymentQueue.default().remove(self)
+    }
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         guard let transaction = transactions.first(where: { $0.payment == payment }) else {
             return
@@ -30,13 +34,11 @@ fileprivate class PaymentObserver: NSObject, SKPaymentTransactionObserver {
         case .purchased:
             queue.finishTransaction(transaction)
             fulfill(transaction)
-            queue.remove(self)
             retainCycle = nil
         case .failed:
             let error = transaction.error ?? NSError.cancelledError()
             queue.finishTransaction(transaction)
             reject(error)
-            queue.remove(self)
             retainCycle = nil
         default:
             break
